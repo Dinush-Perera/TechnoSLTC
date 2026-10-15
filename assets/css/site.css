@@ -1,0 +1,342 @@
+/* =========================================================
+   Techno 2026 — Faculty of Engineering, Sri Lanka Technology Campus
+   ========================================================= */
+
+:root {
+  --paper:    #F6F5FA;
+  --paper-2:  #ECEAF5;
+  --ink:      #161238;
+  --ink-soft: #575182;
+  --line:     #D6D2E6;
+  --accent:   #4B2BD4;
+
+  --measure: 66ch;
+  --gutter: clamp(1.15rem, 4vw, 4rem);
+
+  --sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.0625rem, 0.99rem + 0.3vw, 1.1875rem);
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--accent); text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+a:hover { color: var(--ink); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Display type ---------------------------------- */
+
+h1, h2, h3, .meta, .rowlist__no {
+  font-family: var(--sans);
+  font-variation-settings: "wdth" 112;
+}
+
+h1, h2, h3 { line-height: 1.04; margin: 0; text-wrap: balance; }
+
+h1 {
+  font-size: clamp(2.1rem, 1.2rem + 4.4vw, 5rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 118;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  font-variation-settings: "wdth" 105;
+}
+
+p { margin: 0 0 1.15em; max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.55rem);
+  line-height: 1.48;
+}
+
+.meta {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-variation-settings: "wdth" 100;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  margin: 0 0 0.9rem;
+}
+
+/* ---------- Poster wall (home hero) ----------------------- */
+
+.wall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.plate {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  text-decoration: none;
+}
+
+.plate img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: saturate(0.94);
+  transition: filter 0.4s ease;
+}
+
+.plate:hover img,
+.plate:focus-visible img { filter: saturate(1.06) contrast(1.03); }
+
+/* The name sits beneath the art: every poster already carries its
+   own title, and nothing should cover it. */
+.plate__name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7em;
+  padding: 0.85rem clamp(0.9rem, 2vw, 1.5rem);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  color: var(--ink-soft);
+}
+.plate__name b { color: var(--accent); font-weight: 700; }
+.plate:hover .plate__name { color: var(--ink); }
+
+/* ---------- Sections -------------------------------------- */
+
+.wrap {
+  padding-inline: var(--gutter);
+  padding-block: clamp(2.5rem, 6vw, 5.5rem);
+}
+.wrap--tight { padding-block: clamp(1.9rem, 4vw, 3rem); }
+
+.masthead { border-bottom: 1px solid var(--line); }
+.masthead h1 { margin-bottom: 0.3em; }
+
+.masthead__sub {
+  font-family: var(--sans);
+  font-size: clamp(0.98rem, 0.88rem + 0.4vw, 1.15rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 105;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  max-width: 44ch;
+}
+
+/* ---------- Floor index (home) ---------------------------- */
+
+.rowlist { border-top: 1px solid var(--line); }
+
+.rowlist__item {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 22ch) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: baseline;
+  padding: clamp(1.1rem, 2.4vw, 1.8rem) 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background-color 0.2s ease, padding-inline 0.2s ease;
+}
+.rowlist__item:hover,
+.rowlist__item:focus-visible {
+  background: var(--paper-2);
+  padding-inline: clamp(0.5rem, 1.5vw, 1.2rem);
+}
+
+.rowlist__no {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variation-settings: "wdth" 100;
+}
+
+.rowlist__name {
+  font-family: var(--sans);
+  font-size: clamp(1.2rem, 1rem + 0.9vw, 1.7rem);
+  font-weight: 700;
+  font-variation-settings: "wdth" 112;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.rowlist__note {
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  line-height: 1.55;
+  max-width: 52ch;
+}
+
+/* ---------- Product page ---------------------------------- */
+
+.poster {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+}
+.poster img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: cover;
+}
+
+.intro { border-bottom: 1px solid var(--line); }
+.intro h1 { margin-bottom: 0.32em; }
+
+.intro__tag {
+  font-family: var(--sans);
+  font-size: clamp(1.05rem, 0.92rem + 0.6vw, 1.45rem);
+  font-weight: 500;
+  font-variation-settings: "wdth" 108;
+  line-height: 1.32;
+  color: var(--accent);
+  max-width: 34ch;
+  margin: 0 0 1.6rem;
+}
+
+.prose { max-width: var(--measure); }
+
+/* Named highlights — a set of qualities, not an ordered
+   sequence, so they carry no step numbers. */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.facts > div {
+  background: var(--paper);
+  padding: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+.facts dt { color: var(--accent); margin-bottom: 0.5em; }
+
+.facts dd {
+  margin: 0;
+  font-size: 0.99rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.credit {
+  border-left: 2px solid var(--accent);
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  max-width: 54ch;
+}
+
+/* ---------- Pager ----------------------------------------- */
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-inline: var(--gutter);
+  padding-block: clamp(2rem, 4vw, 3rem);
+}
+
+.pager a {
+  font-family: var(--sans);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+  font-weight: 700;
+  font-variation-settings: "wdth" 110;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 0.12em;
+}
+.pager a:hover { border-bottom-color: var(--accent); }
+.pager a:last-of-type { text-align: right; }
+
+.pager__label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variation-settings: "wdth" 100;
+  color: var(--ink-soft);
+  margin-bottom: 0.35em;
+}
+
+/* ---------- Footer ---------------------------------------- */
+
+.foot {
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+  padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-variation-settings: "wdth" 108;
+  letter-spacing: 0.015em;
+  color: var(--ink-soft);
+}
+
+/* ---------- Responsive ------------------------------------ */
+
+@media (max-width: 860px) {
+  .wall { grid-template-columns: 1fr; }
+
+  .rowlist__item {
+    grid-template-columns: 2.6rem 1fr;
+    row-gap: 0.45rem;
+  }
+  .rowlist__note { grid-column: 2; }
+
+  .poster img { max-height: none; }
+
+  .pager { display: grid; grid-template-columns: 1fr; gap: 1.4rem; }
+  .pager a:last-of-type { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .pager { display: none; }
+}
